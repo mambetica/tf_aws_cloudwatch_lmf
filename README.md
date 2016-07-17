@@ -30,7 +30,7 @@ variable "metric_transformation_namespace" { default = "Namespace" }
 variable "metric_transformation_value" { default = "1" }
 
 module "my_cloudwatch_lmf" {
-  source = "github.com/mambetica/tf_aws_cloudwatch+lmf"
+  source = "github.com/mambetica/tf_aws_cloudwatch_lmf"
   name = "${var.name}"
   pattern = "${var.pattern}"
   log_group_name = "${var.log_group_name}"
