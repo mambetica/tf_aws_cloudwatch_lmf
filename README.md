@@ -1,4 +1,4 @@
-Terraform AWS VPC Module
+Terraform AWS CloudWatch Log Metric Filter Module
 ===========
 
 A Terraform module to create a CloudWatch Log Metric Filter resource
@@ -22,12 +22,12 @@ Usage
 -----
 
 ```
-- `name` { default = "SignInWithoutMFA" }
-- `pattern` { default = "{ $.userIdentity.sessionContext.attributes.mfaAuthenticated != "true" }" }
-- `log_group_name` { default = "MyLogGroup" }
-- `metric_transformation_name` { default = "SignInWithoutMFA" }
-- `metric_transformation_namespace` { default = "MyNamespace" }
-- `metric_transformation_value` { default = "1" }
+variable "name" { default = "SignInWithoutMFA" }
+variable "pattern" { default = "{ $.userIdentity.sessionContext.attributes.mfaAuthenticated != "true" }" }
+variable "log_group_name" { default = "${aws_cloudwatch_log_group.cloudwatch_lg.name}" }
+variable "metric_transformation_name" { default = "${var.name}" }
+variable "metric_transformation_namespace" { default = "Namespace" }
+variable "metric_transformation_value" { default = "1" }
 
 module "my_cloudwatch_lmf" {
   source = "github.com/mambetica/tf_aws_cloudwatch+lmf"
